@@ -231,8 +231,8 @@ tracks/2/keys = {
 "values": [ 12 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=3]
-height = 4.0
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 10, 10.5 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 0, -16 )
@@ -254,6 +254,19 @@ anims/jump = SubResource( 5 )
 anims/run = SubResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 0, 4 )
-shape = SubResource( 3 )
+position = Vector2( 0, 4.5 )
+shape = SubResource( 7 )
+
+[node name="RaycastsGroup" type="Node2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="RaycastsGroup"]
+position = Vector2( -7, 5 )
+enabled = true
+cast_to = Vector2( 0, 12 )
+collision_mask = 8
+
+[node name="RayCast2D2" type="RayCast2D" parent="RaycastsGroup"]
+position = Vector2( 7, 5 )
+enabled = true
+cast_to = Vector2( 0, 12 )
+collision_mask = 8
