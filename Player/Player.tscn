@@ -270,3 +270,8 @@ position = Vector2( 7, 5 )
 enabled = true
 cast_to = Vector2( 0, 12 )
 collision_mask = 8
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+limit_smoothed = true
+smoothing_enabled = true
