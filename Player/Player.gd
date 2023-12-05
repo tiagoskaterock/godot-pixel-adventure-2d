@@ -7,6 +7,8 @@ var jump_force = 450
 var move_direction
 var terminal_velocity = 500
 onready var raycasts = $RaycastsGroup
+var total_apples = 0
+var total_bananas = 0
 
 
 func _physics_process(delta):	
@@ -52,3 +54,20 @@ func is_player_on_ground():
 		if ray.is_colliding():
 			return true
 	return false
+	
+	
+func add_apples(count_apples):
+	total_apples += count_apples
+	
+	
+func add_single_apple():
+	add_apples(1)
+	
+
+func get_total_apples():
+	return total_apples
+	
+	
+func add_single_banana():
+	total_bananas += 1
+	
