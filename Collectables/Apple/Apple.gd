@@ -4,6 +4,7 @@ var get_already = false
 
 func _on_Apple_body_entered(body):
 	if body.name == "Player" and ! get_already:
+		$CollectingFX.play()
 		get_already = true
 		body.add_single_apple()
 		$AnimationPlayer.play("Collected")

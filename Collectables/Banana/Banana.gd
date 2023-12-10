@@ -4,6 +4,7 @@ var get_already = false
 
 func _on_Banana_body_exited(body):	
 	if body.name == "Player" and ! get_already:
+		$CollectingFX.play()
 		get_already = true
 		body.add_single_banana()
 		$AnimationPlayer.play("Collected")
