@@ -84,12 +84,19 @@ func add_single_banana():
 	
 
 func _on_PlayerHitBox_area_entered(area):	
-	if area.name == "Enemy_01_HurtBox":		
+	if area.name == "Enemy_01_HurtBox":	
+		$DeathPlayerFX.play()
 		$TimerDeadAnimation.start()	
+		call_deferred("_disable_collision_shapes", area)
 		is_alive = false
+		
+		
+func _disable_collision_shapes(area):
+	$CollisionShape2D.disabled = true
+	$PlayerHitBox/CollisionShape2D.disabled = true
 
 
-func dead_animation():	
+func dead_animation():
 	$AnimationPlayer.play("hit")
 	
 	
