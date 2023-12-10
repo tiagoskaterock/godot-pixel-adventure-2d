@@ -1,33 +1,47 @@
 extends KinematicBody2D
 
 var velocity = Vector2.ZERO
-var move_speed = 60
+var move_speed = 50
 var gravity = 100
-var move_direction = Vector2.LEFT # Define a direção inicial
-var direction = 'left'
+export var direction = 'left'
+var state = 'Idle'
 
-func _physics_process(delta):    
-	velocity.y += gravity * delta
+func _physics_process(delta):  
+	$AnimationPlayer.play(state)  
+	velocity.y += gravity * delta	
+							
+	if state == 'Idle':
+		velocity.x = 0
+	else: check_direction()
 	
-	# Define a direção com base na variável 'direction'
-	if direction == 'left':
-		move_direction = Vector2.LEFT
-	elif direction == 'right':
-		move_direction = Vector2.RIGHT
-	
-	velocity.x = move_direction.x * move_speed
-	
-	# Verifica se está no chão
 	if is_on_floor():
 		velocity.y = 0
 	else:
 		# Se não estiver no chão, aplica gravidade
-		velocity.y += gravity * delta
+		velocity.y += gravity * delta			
+		
+	move_and_slide(velocity, Vector2.UP) 
 	
-	# Verifica se está na parede na direção horizontal
-	if move_direction.x != 0:
-		var is_colliding_wall = move_and_collide(velocity * delta)
-		if is_colliding_wall:
-			print('wall')
+	if is_on_wall():
+		change_direction()
 	
-	move_and_slide(velocity, Vector2.UP) # Passa Vector2.UP para indicar a direção da colisão
+
+func _on_Timer_timeout():
+	change_state()
+
+
+func check_direction():
+	if direction == 'left':	
+		$Sprite.flip_h = false	
+		velocity.x = -move_speed
+	else:
+		$Sprite.flip_h = true
+		velocity.x = move_speed
+		
+
+func change_direction():
+	direction = 'left' if direction == 'right' else "right"
+
+
+func change_state():
+	state = 'Idle' if state == 'Run' else "Run"
