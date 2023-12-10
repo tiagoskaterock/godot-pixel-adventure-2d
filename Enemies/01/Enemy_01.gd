@@ -62,6 +62,15 @@ func _on_TimerDead_timeout():
 
 
 func _on_HitBox_area_entered(area):
-	$TimerDead.start()		
-	if area.name == 'StompArea': is_alive = false	
+	$TimerDead.start()
+	call_deferred("_disable_collision_shapes", area)
+
+
+func _disable_collision_shapes(area):
+	$CollisionShape2D.disabled = true
+	$HitBox/CollisionShape2D.disabled = true
+	$Enemy_01_HurtBox/CollisionShape2D.disabled = true
+
+	if area.name == 'StompArea':
+		is_alive = false
 

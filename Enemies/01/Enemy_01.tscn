@@ -6,7 +6,7 @@
 [ext_resource path="res://PixelAdventure_02/Enemies/Mushroom/Hit.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 8.33333, 10 )
+extents = Vector2( 6, 10 )
 
 [sub_resource type="Animation" id=6]
 resource_name = "Hit"
@@ -193,7 +193,7 @@ autostart = true
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.5, 7 )
+position = Vector2( 3.57628e-07, 7 )
 scale = Vector2( 1.5, 0.85 )
 shape = SubResource( 5 )
 

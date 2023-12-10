@@ -94,3 +94,10 @@ func dead_animation():
 	
 func _on_TimerDeadAnimation_timeout():
 	get_tree().reload_current_scene()
+
+
+func _on_StompArea_area_entered(area):
+	if area.name == "HitBox":
+		if Input.is_action_pressed("jump"):
+			velocity.y = -jump_force
+		else: velocity.y = -jump_force / 1.5
