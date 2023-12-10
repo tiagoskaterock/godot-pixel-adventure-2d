@@ -136,10 +136,17 @@ position = Vector2( 432, 96 )
 [node name="Banana" parent="BananaGroup" instance=ExtResource( 10 )]
 position = Vector2( 176, 64 )
 
-[node name="Enemy_01" parent="." instance=ExtResource( 11 )]
-position = Vector2( 112, -32 )
+[node name="EnemyGroup" type="Node2D" parent="."]
+position = Vector2( 800, 0 )
+
+[node name="Enemy_01" parent="EnemyGroup" instance=ExtResource( 11 )]
+position = Vector2( -688, -32 )
 direction = "right"
 
-[node name="Enemy_02" parent="." instance=ExtResource( 11 )]
-position = Vector2( 800, 0 )
+[node name="Enemy_03" parent="EnemyGroup" instance=ExtResource( 11 )]
+position = Vector2( -832, 80 )
+direction = "right"
+
+[node name="Enemy_02" parent="EnemyGroup" instance=ExtResource( 11 )]
+position = Vector2( -319, 77 )
 direction = "right"

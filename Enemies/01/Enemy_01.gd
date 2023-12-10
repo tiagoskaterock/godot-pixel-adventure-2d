@@ -5,8 +5,14 @@ var move_speed = 50
 var gravity = 100
 export var direction = 'left'
 var state = 'Idle'
+var is_alive = true
 
 func _physics_process(delta):  
+	if is_alive: alive_animation(delta)
+	else: dead_animation()
+
+
+func alive_animation(delta):
 	$AnimationPlayer.play(state)  
 	velocity.y += gravity * delta	
 							
@@ -24,8 +30,8 @@ func _physics_process(delta):
 	
 	if is_on_wall():
 		change_direction()
-	
 
+	
 func _on_Timer_timeout():
 	change_state()
 
@@ -44,4 +50,17 @@ func change_direction():
 
 
 func change_state():
-	state = 'Idle' if state == 'Run' else "Run"
+	state = 'Idle' if state == 'Run' else "Run"		
+
+
+func dead_animation():
+	$AnimationPlayer.play("Hit")	
+	
+
+func _on_TimerDead_timeout():
+	queue_free()
+
+
+func _on_HitBox_area_entered(area):
+	$TimerDead.start()	
+	if area.name == 'StompArea': is_alive = false	

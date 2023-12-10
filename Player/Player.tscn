@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://PixelAdventure_01/Main Characters/Ninja Frog/Idle (32x32).png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -234,6 +234,9 @@ tracks/2/keys = {
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 10, 10.5 )
 
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 17, 5 )
+
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 0, -16 )
 script = ExtResource( 2 )
@@ -276,3 +279,11 @@ current = true
 limit_bottom = 200
 limit_smoothed = true
 smoothing_enabled = true
+
+[node name="StompArea" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StompArea"]
+position = Vector2( 0, 15 )
+shape = SubResource( 8 )
