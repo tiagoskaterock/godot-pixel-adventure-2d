@@ -9,9 +9,15 @@ var terminal_velocity = 500
 onready var raycasts = $RaycastsGroup
 var total_apples = 0
 var total_bananas = 0
+var is_alive = true
 
 
 func _physics_process(delta):	
+	if is_alive: alive_animation(delta)
+	else: dead_animation()
+	
+	
+func alive_animation(delta):
 	if is_player_on_ground(): velocity.y = 0
 	check_move_direction()
 	check_jump()
@@ -42,9 +48,7 @@ func check_jump():
 		
 		
 func move(delta):
-	velocity.y += gravity * delta	
-	# velocity.x = move_speed * move_direction	
-	
+	velocity.y += gravity * delta		
 	velocity.x = lerp(velocity.x, move_speed * move_direction, 0.2)	
 	move_and_slide(velocity)
 		
@@ -71,3 +75,16 @@ func get_total_apples():
 func add_single_banana():
 	total_bananas += 1
 	
+
+func _on_PlayerHitBox_area_entered(area):	
+	if area.name == "Enemy_01_HurtBox":		
+		$TimerDeadAnimation.start()	
+		is_alive = false
+
+
+func dead_animation():	
+	$AnimationPlayer.play("hit")
+	
+	
+func _on_TimerDeadAnimation_timeout():
+	get_tree().reload_current_scene()

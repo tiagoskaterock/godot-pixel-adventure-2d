@@ -78,6 +78,7 @@ jump={
 2d_physics/layer_5="Apple"
 2d_physics/layer_6="EnemyHitBox"
 2d_physics/layer_7="StompPlayerArea"
+2d_physics/layer_8="Trap"
 
 [physics]
 
