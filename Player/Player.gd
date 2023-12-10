@@ -23,9 +23,15 @@ func alive_animation(delta):
 	check_jump()
 	check_animation()		
 	check_terminal_velocity()
+	check_if_is_falling()
 	move(delta)
 	
 	
+func check_if_is_falling():
+	if velocity.y > 0:
+		$AnimationPlayer.play("fall")
+		
+		
 func check_terminal_velocity():
 	if velocity.y > terminal_velocity: velocity.y = terminal_velocity
 	

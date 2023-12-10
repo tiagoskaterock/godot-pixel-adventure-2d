@@ -62,6 +62,6 @@ func _on_TimerDead_timeout():
 
 
 func _on_HitBox_area_entered(area):
-	$TimerDead.start()	
+	$TimerDead.start()		
 	if area.name == 'StompArea': is_alive = false	
 
