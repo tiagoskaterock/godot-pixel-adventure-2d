@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://PixelAdventure_01/Main Characters/Ninja Frog/Idle (32x32).png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://PixelAdventure_01/Main Characters/Ninja Frog/Run (32x32).png" type="Texture" id=4]
 [ext_resource path="res://PixelAdventure_01/Main Characters/Ninja Frog/Hit (32x32).png" type="Texture" id=5]
 [ext_resource path="res://PixelAdventure_01/Main Characters/Ninja Frog/Fall (32x32).png" type="Texture" id=6]
+[ext_resource path="res://fx/slime_jump.wav" type="AudioStream" id=7]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -342,6 +343,10 @@ shape = SubResource( 9 )
 
 [node name="TimerDeadAnimation" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="JumpFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+volume_db = -24.128
 
 [connection signal="area_entered" from="StompArea" to="." method="_on_StompArea_area_entered"]
 [connection signal="area_entered" from="PlayerHitBox" to="." method="_on_PlayerHitBox_area_entered"]

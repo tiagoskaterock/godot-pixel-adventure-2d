@@ -50,6 +50,7 @@ func check_animation():
 	
 func check_jump():
 	if Input.is_action_pressed("jump") and is_player_on_ground():
+		$JumpFX.play()
 		velocity.y = -jump_force
 		
 		
@@ -99,5 +100,6 @@ func _on_TimerDeadAnimation_timeout():
 func _on_StompArea_area_entered(area):
 	if area.name == "HitBox":
 		if Input.is_action_pressed("jump"):
+			$JumpFX.play()
 			velocity.y = -jump_force
 		else: velocity.y = -jump_force / 1.5
