@@ -6,6 +6,7 @@ var gravity = 100
 export var direction = 'left'
 var state = 'Idle'
 var is_alive = true
+var deathSoundPlayed = false
 
 func _physics_process(delta):  
 	if is_alive: alive_animation(delta)
@@ -54,7 +55,7 @@ func change_state():
 
 
 func dead_animation():
-	$AnimationPlayer.play("Hit")	
+	$AnimationPlayer.play("Hit")
 	
 
 func _on_TimerDead_timeout():
@@ -62,15 +63,17 @@ func _on_TimerDead_timeout():
 
 
 func _on_HitBox_area_entered(area):
+	print('_on_HitBox_area_entered')	
 	$TimerDead.start()
 	call_deferred("_disable_collision_shapes", area)
+	if ! deathSoundPlayed: 		
+		deathSoundPlayed = true
+		$DeathFX.play()
 
 
 func _disable_collision_shapes(area):
 	$CollisionShape2D.disabled = true
 	$HitBox/CollisionShape2D.disabled = true
 	$Enemy_01_HurtBox/CollisionShape2D.disabled = true
-
 	if area.name == 'StompArea':
 		is_alive = false
-
