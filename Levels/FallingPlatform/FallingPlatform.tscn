@@ -122,5 +122,10 @@ one_shot = true
 position = Vector2( 0, -1 )
 shape = SubResource( 5 )
 
+[node name="TimerToRespawn" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="timeout" from="TimerToFall" to="." method="_on_TimerToFall_timeout"]
 [connection signal="body_entered" from="AreaDetection" to="." method="_on_AreaDetection_body_entered"]
+[connection signal="timeout" from="TimerToRespawn" to="." method="_on_TimerToRespawn_timeout"]
