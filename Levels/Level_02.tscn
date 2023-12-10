@@ -133,3 +133,9 @@ position = Vector2( 384, 127 )
 
 [node name="FallingPlatform3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 464, 126 )
+
+[node name="FallingPlatform4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 544, 112 )
+
+[node name="FallingPlatform5" parent="." instance=ExtResource( 7 )]
+position = Vector2( 640, 125 )
