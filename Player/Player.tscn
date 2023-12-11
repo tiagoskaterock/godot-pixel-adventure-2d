@@ -296,6 +296,7 @@ hframes = 11
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
+playback_speed = 2.0
 anims/RESET = SubResource( 1 )
 anims/fall = SubResource( 10 )
 anims/hit = SubResource( 4 )
