@@ -13,16 +13,19 @@ func _process(delta):
 
 func _on_AreaDetection_body_entered(body):
 	if body.name == "Player":
-		$TimerToFall.start()
-		$AnimationPlayer.play("Off")
+		if body.velocity.y > 0:			
+			print (body.velocity.y)
+			$TimerToFall.start()
+			$AnimationPlayer.play("Shake")
 
 
 func _on_TimerToFall_timeout():
-	$TimerToRespawn.start()
+	$TimerToRespawn.start()	
 	gravity = gravity_to_fall
 
 
 func _on_TimerToRespawn_timeout():
+	$AnimationPlayer.play("On")
 	global_position.y = reset_position
 	gravity = 0
 	velocity.y = 0

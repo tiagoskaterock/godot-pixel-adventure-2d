@@ -80,6 +80,7 @@ jump={
 2d_physics/layer_7="StompPlayerArea"
 2d_physics/layer_8="Trap"
 2d_physics/layer_9="Passage"
+2d_physics/layer_10="Platform"
 
 [physics]
 
